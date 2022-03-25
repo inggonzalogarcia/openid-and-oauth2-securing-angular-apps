@@ -4,7 +4,7 @@ import { UserManager, User } from 'oidc-client';
 import { Constants } from '../constants';
 import { Subject } from 'rxjs';
 
-@Injectable({providedIn: CoreModule})
+@Injectable({ providedIn: CoreModule })
 export class AuthService {
   private _userManager: UserManager;
   private _user: User;
@@ -16,10 +16,10 @@ export class AuthService {
     const stsSettings = {
       authority: Constants.stsAuthority,
       client_id: Constants.clientId,
-      redirect_uri: `${Constants.clientRoot}signing-callback`,
+      redirect_uri: `${Constants.clientRoot}signin-callback`,
       scope: 'openid profile projects-api',
       response_type: 'code',
-      post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`,
+      post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`
     };
     this._userManager = new UserManager(stsSettings);
   }
@@ -36,7 +36,7 @@ export class AuthService {
       }
       this._user = user;
       return userCurrent;
-    })
+    });
   }
 
   completeLogin() {
@@ -44,7 +44,7 @@ export class AuthService {
       this._user = user;
       this._loginChangedSubject.next(!!user && !user.expired);
       return user;
-    })
+    });
   }
 
   logout() {
@@ -53,6 +53,7 @@ export class AuthService {
 
   completeLogout() {
     this._user = null;
-    return this._userManager.signedoutRedirectCallback();
+    return this._userManager.signoutRedirectCallback();
   }
+
 }
