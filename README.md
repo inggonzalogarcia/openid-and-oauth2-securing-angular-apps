@@ -14,3 +14,6 @@ For running SecuringAngularApps.Backend-ASP.NET-5
 
 For installing oidc-client
 - X:\github\openid-and-oauth2-securing-angular-apps\securing-angular-client-ng11>npm install oidc-client --save
+
+Users to test:
+alice@globomantics.com/Test123!!!
