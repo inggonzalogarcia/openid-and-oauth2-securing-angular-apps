@@ -6,7 +6,7 @@ import { AuthService } from '../core/auth-service.component';
   selector: 'app-signout-callback',
   template: `<div></div>`
 })
-
+// added this file
 export class SignoutRedirectCallbackComponent implements OnInit {
   constructor(private _authService: AuthService,
               private _router: Router) { }

@@ -33,7 +33,8 @@ import { UnauthorizedComponent } from './home/unauthorized.component';
     ProjectListComponent,
     ProjectComponent,
     AddEditMilestoneDialogComponent,
-    SigninRedirectCallbackComponent, // added
+    SigninRedirectCallbackComponent,
+    SignoutRedirectCallbackComponent,
   ],
   imports: [
     BrowserModule,
