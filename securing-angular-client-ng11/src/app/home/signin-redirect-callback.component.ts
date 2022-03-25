@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-signin-callback',
   template: `<div></div>`
 })
-
+// this file added
 export class SigninRedirectCallbackComponent implements OnInit {
   constructor(private _authService: AuthService,
               private _router: Router) { }
