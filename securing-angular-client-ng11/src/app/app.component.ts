@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private _authService: AuthService) {
     this._authService.loginChanged.subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
-    })    
+    })
   }
 
   ngOnInit() {
