@@ -6,3 +6,14 @@ obj
 packages
 *.vs/
 
+/node_modules/
+/dist/
+/coverage/
+*stats*
+**.stackdump
+yarn.lock
+/.idea/
+/docs/
+/.vs
+/.vscode
+/.scannerwork
