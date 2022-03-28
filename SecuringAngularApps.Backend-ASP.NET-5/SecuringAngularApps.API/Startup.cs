@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +37,20 @@ namespace SecuringAngularApps.API
                     .AllowCredentials();
                 });
             });
-            services.AddMvc();
+            services.AddAuthentication("Bearer").
+                AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:4242";
+                    options.Audience = "projects-api";
+                    options.RequireHttpsMetadata = false;
+                });
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder().
+                RequireAuthenticatedUser().
+                Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
 
         }
 
@@ -47,6 +62,7 @@ namespace SecuringAngularApps.API
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors("AllRequests");
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
