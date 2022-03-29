@@ -29,6 +29,9 @@ export class AuthService {
       // }
     };
     this._userManager = new UserManager(stsSettings);
+    this._userManager.events.addAccessTokenExpired(_ => {
+      this._loginChangedSubject.next(false);
+    });
   }
 
   login() {
