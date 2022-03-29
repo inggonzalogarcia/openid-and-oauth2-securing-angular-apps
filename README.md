@@ -17,3 +17,5 @@ For installing oidc-client
 
 Users to test:
 alice@globomantics.com/Test123!!!
+
+Please don't expect this solution to work as expected; as it was created with the purpose of having handy some commits, for taking a look when creating something similar.
