@@ -25,7 +25,7 @@ namespace SecuringAngularApps.API.Controllers
 
         // GET: api/Projects
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public IEnumerable<Project> GetProjects()
         {
             return _context.Projects;
