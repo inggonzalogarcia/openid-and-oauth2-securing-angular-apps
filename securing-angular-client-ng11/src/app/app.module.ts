@@ -35,7 +35,7 @@ import { UnauthorizedComponent } from './home/unauthorized.component';
     AddEditMilestoneDialogComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    UnauthorizedComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: 'project/:projectId', component: ProjectComponent },
     { path: 'signin-callback', component: SigninRedirectCallbackComponent },
     { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
-    { path: 'unauthorize', component: UnauthorizedComponent }
+    { path: 'unauthorized', component: UnauthorizedComponent }
 ];
 
 @NgModule({

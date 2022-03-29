@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CoreModule } from './core.module';
 import { UserManager, User } from 'oidc-client';
 import { Constants } from '../constants';
 import { Subject } from 'rxjs';
@@ -19,7 +18,7 @@ export class AuthService {
       redirect_uri: `${Constants.clientRoot}signin-callback`,
       scope: 'openid profile projects-api',
       response_type: 'code',
-      post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`//,
+      post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`,
       // metadata: {
       //   issuer: `${Constants.stsAuthority}`,
       //   authorization_endpoint: `${Constants.stsAuthority}authorize?audience=projects-api`,
@@ -66,7 +65,7 @@ export class AuthService {
 
   getAccessToken() {
     return this._userManager.getUser().then(user => {
-      if (!user && user.expired) {
+      if (!!user && !user.expired) {
         return user.access_token;
       }
       else {

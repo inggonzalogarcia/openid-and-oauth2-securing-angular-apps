@@ -59,29 +59,6 @@ namespace SecuringAngularApps.STS
                         "projects-api"
                     },
                     AccessTokenLifetime = 600
-                },
-                new Client
-                {
-                    ClientId = "mvc",
-                    ClientName = "MVC Client",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
-                    RequirePkce = false,
-
-                    ClientSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },
-
-                    RedirectUris           = { "https://localhost:4201/signin-oidc" },
-                    PostLogoutRedirectUris = { "https://localhost:4201/signout-callback-oidc" },
-
-                    AllowedScopes =
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
-                    },
-                    AllowOfflineAccess = true
-
                 }
             };
     }

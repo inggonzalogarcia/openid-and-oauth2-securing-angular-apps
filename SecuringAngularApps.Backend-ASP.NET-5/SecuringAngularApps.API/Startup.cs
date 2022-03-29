@@ -38,28 +38,28 @@ namespace SecuringAngularApps.API
                     .AllowCredentials();
                 });
             });
-            //services.AddAuthentication("Bearer").
-            //    AddJwtBearer("Bearer", options =>
+
+            //services.AddAuthentication("Bearer")
+            //    .AddJwtBearer("Bearer", options =>
             //    {
-            //        options.Authority = "http://localhost:4242";
+            //        options.Authority = "https://localhost:4242";
             //        options.Audience = "projects-api";
             //        options.RequireHttpsMetadata = false;
             //    });
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = "http://localhost:4242";
-                    options.ApiName = "projects-api";
-                    options.RequireHttpsMetadata = false;
-                });
-            services.AddMvc(options =>
+                       .AddIdentityServerAuthentication(options =>
+                       {
+                           options.Authority = "https://localhost:4242";
+                           options.ApiName = "projects-api";
+                           options.RequireHttpsMetadata = false;
+                       });
+            services.AddMvc(config =>
             {
-                var policy = new AuthorizationPolicyBuilder().
-                RequireAuthenticatedUser().
-                Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,9 +70,9 @@ namespace SecuringAngularApps.API
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors("AllRequests");
-            app.UseAuthentication();
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

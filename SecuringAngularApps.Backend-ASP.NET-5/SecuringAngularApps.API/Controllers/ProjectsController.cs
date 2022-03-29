@@ -190,7 +190,7 @@ namespace SecuringAngularApps.API.Controllers
         private async Task<bool> MilestoneAccessCheck(Milestone item)
         {
             var userId = this.User.FindFirstValue(JwtClaimTypes.Subject);
-            var perm = await _context.UserPermissions.FirstOrDefaultAsync(up =>
+            var perm = await _context.UserPermissions.FirstOrDefaultAsync(up => 
             up.ProjectId == item.ProjectId &&
                 up.UserProfileId == userId);
             return (perm != null && perm.Value == "Edit");

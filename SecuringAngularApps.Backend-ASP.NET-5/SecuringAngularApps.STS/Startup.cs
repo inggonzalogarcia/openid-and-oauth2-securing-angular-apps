@@ -63,8 +63,7 @@ namespace SecuringAngularApps.STS
                 options.Events.RaiseSuccessEvents = true;
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
-                options.Authentication.CookieLifetime = TimeSpan.FromMinutes(15);
-           })
+            })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryApiResources(Config.ApiResources)
@@ -82,6 +81,7 @@ namespace SecuringAngularApps.STS
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
 
             app.UseStaticFiles();
