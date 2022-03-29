@@ -19,6 +19,8 @@ export class AuthService {
       scope: 'openid profile projects-api',
       response_type: 'code',
       post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`,
+      automaticSilentRenew: true,
+      silent_redirec_uri: `${Constants.clientRoot}assets/silent-callback.html`
       // metadata: {
       //   issuer: `${Constants.stsAuthority}`,
       //   authorization_endpoint: `${Constants.stsAuthority}authorize?audience=projects-api`,
@@ -63,6 +65,7 @@ export class AuthService {
 
   completeLogout() {
     this._user = null;
+    this._loginChangedSubject.next(false);
     return this._userManager.signoutRedirectCallback();
   }
 
