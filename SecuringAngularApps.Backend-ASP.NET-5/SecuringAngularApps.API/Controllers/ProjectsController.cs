@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,12 @@ namespace SecuringAngularApps.API.Controllers
         //[AllowAnonymous]
         public IEnumerable<Project> GetProjects()
         {
-            return _context.Projects;
+            //var claims = (from c in User.Claims select new { c.Type, c.Value }).ToList();
+            //claims.ForEach(c => Console.WriteLine($"{c.Type}: {c.Value}"));
+            var userId = this.User.FindFirstValue(JwtClaimTypes.Subject);
+            List<int> userProjectIds = _context.UserPermissions.Where(up => 
+            up.ProjectId.HasValue && up.UserProfileId == userId).Select(up => up.ProjectId.Value).ToList();
+            return _context.Projects.Where(p => userProjectIds.Contains(p.Id));
         }
 
         // GET: api/Projects/5

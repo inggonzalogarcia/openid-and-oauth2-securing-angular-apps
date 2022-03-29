@@ -2,6 +2,7 @@
 
 namespace SecuringAngularApps.API.Model
 {
+    //this was already added
     public class UserPermission
     {
         public int Id { get; set; }
