@@ -8,7 +8,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
-import { CoreModule } from '../core/core.module';
 
 import { AddProjectDialogComponent } from './add-project-dialog.component';
 import { AddProjectUserDialogComponent } from './add-project-user-dialog.component';
@@ -16,6 +15,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DeleteDialogComponent } from './delete-dialog.component';
 import { ManagePermissionsComponent } from './manage-permissions.component';
 import { ManageProjectsComponent } from './manage-projects.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
@@ -29,7 +29,7 @@ import { ManageProjectsComponent } from './manage-projects.component';
     MatInputModule,
     MatSelectModule,
     AdminRoutingModule,
-    CoreModule,
+    CoreModule
   ],
   exports: [],
   declarations: [

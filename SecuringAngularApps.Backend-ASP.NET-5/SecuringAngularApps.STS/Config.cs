@@ -60,7 +60,6 @@ namespace SecuringAngularApps.STS
                     },
                     AccessTokenLifetime = 600
                 },
-
                 new Client
                 {
                     ClientId = "mvc",

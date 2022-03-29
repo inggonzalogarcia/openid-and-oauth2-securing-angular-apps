@@ -6,6 +6,7 @@ export class AuthContext {
   userProfile: UserProfile;
 
   get isAdmin() {
-    return !!this.claims && !!this.claims.find(c => c.type === 'role' && c.value === 'Admin');
+    return !!this.claims && !!this.claims.find(c =>
+      c.type === 'role' && c.value === 'Admin');
   }
 }

@@ -7,6 +7,7 @@ export class Constants {
 
 	// public static apiRoot = 'https://localhost:2112/api/';
 	// public static stsAuthority = 'https://localhost:4242/';
+
 	// public static stsAuthority = 'https://briannoyes.auth0.com/';
 
 	public static clientId = 'spa-client';

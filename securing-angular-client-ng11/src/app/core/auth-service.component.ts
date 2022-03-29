@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserManager, User } from 'oidc-client';
 import { Constants } from '../constants';
 import { Subject } from 'rxjs';
+import { CoreModule } from './core.module';
 import { HttpClient } from '@angular/common/http';
 import { AuthContext } from '../model/auth-context';
 
@@ -23,7 +24,7 @@ export class AuthService {
       response_type: 'code',
       post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`,
       automaticSilentRenew: true,
-      silent_redirec_uri: `${Constants.clientRoot}assets/silent-callback.html`
+      silent_redirect_uri: `${Constants.clientRoot}assets/silent-callback.html`
       // metadata: {
       //   issuer: `${Constants.stsAuthority}`,
       //   authorization_endpoint: `${Constants.stsAuthority}authorize?audience=projects-api`,
@@ -106,4 +107,5 @@ export class AuthService {
         error => console.error(error)
       );
   }
+
 }
