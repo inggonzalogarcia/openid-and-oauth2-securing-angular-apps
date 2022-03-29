@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from '../core/core.module';
 
 import { AddProjectDialogComponent } from './add-project-dialog.component';
 import { AddProjectUserDialogComponent } from './add-project-user-dialog.component';
@@ -27,7 +28,8 @@ import { ManageProjectsComponent } from './manage-projects.component';
     MatTableModule,
     MatInputModule,
     MatSelectModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    CoreModule,
   ],
   exports: [],
   declarations: [
